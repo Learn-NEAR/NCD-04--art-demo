@@ -1,0 +1,22 @@
+[package]
+name = "artdemo"
+version = "0.1.0"
+edition = "2021"
+# ctrl shift p
+
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = "3.1.0"
+random = "0.12.2"
+
+[profile.release]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
