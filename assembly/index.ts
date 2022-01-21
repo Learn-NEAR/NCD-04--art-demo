@@ -34,6 +34,17 @@ export function burnMyDesign() : void {
 
     logging.log(`\n\n\t> Design burned \n\n\t`)
 } 
+export function transferOwnership(newOwner : string) : void {
+    assert(designs.contains(context.sender), "No design to transfer here.");
+    let design = designs.getSome(context.sender);
+    designs.set(newOwner, design);
+    designs.delete(context.sender);
+
+    owners.delete(context.sender);
+    owners.add(newOwner);
+    
+    logging.log("\n\n\tOwnership Trasnsfered")
+}
 
 export function design(seed : i32 = 0) : void {
     let instructions = generate(seed);
