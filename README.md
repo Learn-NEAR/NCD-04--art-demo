@@ -2,8 +2,10 @@
 
 Generative art on NEAR.
 
-----
+---
+
 ## Environment
+
 ```sh
 export CONTRACT = [contract_id] // ncd.ys24.testnet
 export ACCOUNT = [account_id]
@@ -21,20 +23,20 @@ near call CONTRACT design --accountId ACCOUNT
 near call CONTRACT design '{"seed": [number]}'  --accountId ACCOUNT
 ```
 
-`claimMyDesign(): void`
+`claim_my_design(): void`
 
 ```sh
-near call CONTRACT claimMyDesign '{"seed": [number]}' --accountId ACCOUNT
+near call CONTRACT claim_my_design '{"seed": [number]}' --accountId ACCOUNT
 ```
 
-`viewMyDesign(): void`
+`view_my_design(): void`
 
 ```sh
-near call CONTRACT viewMyDesign --accountId ACCOUNT
+near call CONTRACT view_my_design --accountId ACCOUNT
 ```
 
-`burnMyDesign(): void`
+`burn_my_design(): void`
 
 ```sh
-near call CONTRACT burnMyDesign --accountId ACCOUNT 
+near call CONTRACT burn_my_design --accountId ACCOUNT
 ```

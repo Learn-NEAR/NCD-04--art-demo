@@ -1,15 +1,18 @@
 {
   "name": "art-demo",
   "version": "1.0.0",
-  "description": "NCD art demo project",
-  "main": "index.js",
+  "license": "(MIT AND Apache-2.0)",
   "scripts": {
-    "test": "asp",
-    "build": "asb"
+    "deploy": "npm run build:contract && cd contract && near dev-deploy --wasmFile ./target/wasm32-unknown-unknown/release/hello_near.wasm",
+    "build": "npm run build:contract",
+    "build:contract": "cd contract && rustup target add wasm32-unknown-unknown && cargo build --all --target wasm32-unknown-unknown --release",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "cd contract && cargo test",
+    "test:integration": "npm run build:contract && cd integration-tests && cargo run --example integration-tests \"../contract/target/wasm32-unknown-unknown/release/hello_near.wasm\"",
+    "deps-install": "npm install"
   },
-  "author": "Yassine",
-  "license": "MIT",
   "devDependencies": {
-    "near-sdk-as": "^3.1.0"
-  }
+    "near-cli": "^3.3.0"
+  },
+  "dependencies": {}
 }
